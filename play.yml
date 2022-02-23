@@ -1,0 +1,23 @@
+---
+ - hosts: all
+   ignore_errors: yes
+   become: yes
+   tasks:
+    - name: create user
+      user:
+        name: michelle
+        comment: michelle bell
+   
+    - name: create directory
+      file:
+       path: /tmp/devops-ans
+       owner: michelle
+       state: directory
+       mode: "0777"
+   
+    - name: create file
+      file:
+       path: /tmp/ansible-class 
+       owner: michelle
+       state: touch
+       mode: "0600"     
